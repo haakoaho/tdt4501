@@ -24,8 +24,8 @@ namespace tdt4501
         {
             ILocationServices locationServices = DependencyService.Get<ILocationServices>();
             Location location = Task.Run(async () => await GetLocation()).Result;
-            Longitude = "Longitude " + location.Longitude.ToString();
-            Latitude = "Latitude " + location.Latitude.ToString();
+            Longitude = "Longitude: " + location.Longitude.ToString();
+            Latitude = "Latitude: " + location.Latitude.ToString();
 
 
         }
