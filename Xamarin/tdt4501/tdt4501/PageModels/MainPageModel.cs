@@ -19,9 +19,10 @@ namespace tdt4501
         public string Longitude { set; get; }
         public string Latitude { set; get; }
 
-        public MainPageModel(LocationModule locationModule)
+        public MainPageModel()
         {
-            Location location = Task.Run(async () => await locationModule.GetLocation()).Result;
+            Location location = Task.Run(async () => await LocationModule.Instance.GetLocation()).Result;
+            location = Task.Run(async () => await LocationModule.Instance.GetLocation()).Result;
             Longitude = "Longitude: " + location.Longitude.ToString();
             Latitude = "Latitude: " + location.Latitude.ToString();
 

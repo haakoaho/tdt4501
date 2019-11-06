@@ -11,9 +11,6 @@ namespace tdt4501
         public App()
         {
             InitializeComponent();
-            LocationModule locationModule = LocationModule.Instance;
-
-            FreshIOC.Container.Register<LocationModule>(locationModule);
 
         var page = FreshPageModelResolver.ResolvePageModel <MainPageModel> ();  
         var basicNavContainer = new FreshNavigationContainer(page);  
