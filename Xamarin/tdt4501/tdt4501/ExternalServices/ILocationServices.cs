@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace tdt4501.ExternalServices
 {
-    interface ILocationServices
+    public interface ILocationServices
     {
-        Task<Tuple<int,int>> GetGeoCoordinatesAsync();
+        Tuple<int,int> GetGeoCoordinates();
     }
 }
