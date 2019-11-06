@@ -13,6 +13,8 @@ using tdt4501.Droid.services;
 using tdt4501.ExternalServices;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Android.Gms.Location;
+using Android.Gms.Common;
 
 [assembly: Xamarin.Forms.Dependency(typeof(LocationService))]
 namespace tdt4501.Droid.services

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Essentials;
 using tdt4501.ExternalServices;
 
 
@@ -20,8 +21,12 @@ namespace tdt4501
         public MainPage()
         {
             ILocationServices locationServices = DependencyService.Get<ILocationServices>();
-            coordinatesTuple= locationServices.GetGeoCoordinates();
+            Location location = Task.Run(async () => await GetLocation()).Result;
             InitializeComponent();
+        }
+        Task<Location> GetLocation()
+        {
+            return Geolocation.GetLastKnownLocationAsync();
         }
     }
 }
