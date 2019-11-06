@@ -16,17 +16,11 @@ namespace tdt4501
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
-        Tuple<int, int> coordinatesTuple { get; set; } = Tuple.Create(4,4);
-        String text1{ get { return "hello world"; } }
+
         public MainPage()
         {
-            ILocationServices locationServices = DependencyService.Get<ILocationServices>();
-            Location location = Task.Run(async () => await GetLocation()).Result;
             InitializeComponent();
         }
-        Task<Location> GetLocation()
-        {
-            return Geolocation.GetLastKnownLocationAsync();
-        }
+
     }
 }
