@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Essentials;
-using tdt4501.ExternalServices;
+using tdt4501.Modules;
 using FreshMvvm;
 
 namespace tdt4501
@@ -18,21 +18,16 @@ namespace tdt4501
     {
         public string Longitude { set; get; }
         public string Latitude { set; get; }
-        Tuple<int, int> coordinatesTuple { get; set; } = Tuple.Create(4, 4);
 
-        public MainPageModel()
+        public MainPageModel(LocationModule locationModule)
         {
-            ILocationServices locationServices = DependencyService.Get<ILocationServices>();
-            Location location = Task.Run(async () => await GetLocation()).Result;
+            Location location = Task.Run(async () => await locationModule.GetLocation()).Result;
             Longitude = "Longitude: " + location.Longitude.ToString();
             Latitude = "Latitude: " + location.Latitude.ToString();
 
 
         }
 
-        Task<Location> GetLocation()
-        {
-            return Geolocation.GetLastKnownLocationAsync();
-        }
+
     }
 }
