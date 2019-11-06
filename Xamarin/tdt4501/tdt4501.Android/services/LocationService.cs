@@ -9,10 +9,16 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using tdt4501.Droid.services;
 using tdt4501.ExternalServices;
+using Xamarin.Essentials;
+using Xamarin.Forms;
+
+[assembly: Xamarin.Forms.Dependency(typeof(LocationService))]
 namespace tdt4501.Droid.services
 {
-    class LocationService : ILocationServices
+
+    public class LocationService : ILocationServices
     {
         public Tuple<int, int> GetGeoCoordinates()
         {
