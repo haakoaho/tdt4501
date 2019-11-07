@@ -31,12 +31,12 @@ describe('messages', function () {
       on: {
         'new message': function (data) {
           var text = JSON.parse(data).text;
-          expect(text).to.equal('123');
+          expect(text).to.equal('abcd');
         }
       },
       emit: {
         'join room': 'velociraptor1',
-        'new message': '123'
+        'new message': 'abcd'
       }
     };
 

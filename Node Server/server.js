@@ -20,43 +20,24 @@ webSocket.on('connection', function (socket) {
   console.log('new connection');
 
 
-  // Creates a new room with regards to request
   socket.on('create room', function (data) {
-    console.log('room created');
-    console.log('room: ' + data);
     rooms.push(data);
     socket.join(data);
+    console.log("my data " + data);
     myroom = data
-    webSocket.sockets.in(data).emit('connectToRoom', 'Joined ' + data);
   });
 
   // join a room
   socket.on('join room', function (data) {
-    console.log('room joined');
-    var checkRoom = null;
-    var checkRoom = _.find(rooms, {'name': data});
-
-    if (myroom == data) {
-      console.log('already in' + myroom);
-    } else if (checkRoom != null) {
       socket.join(data);
       myroom = data;
-      socket.emit('connectToRoom', 'Joined ' + myroom);
     }
-  });
+  );
 
-
-  function getRoom(){
-      return rooms.find(myroom);
-  }
 
   // When a player sends data
-  socket.on('new message', function (message) {
-    console.log(message);
-    if (myroom == null) {
-      return;
-    }
-  webSocket.sockets.in(myroom).emit('new message', JSON.stringify(message));
+  socket.on('new message', function (data) {
+    socket.to(myroom).emit('new message', JSON.stringify(data));
   });
 });
 
