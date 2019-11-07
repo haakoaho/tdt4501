@@ -25,7 +25,7 @@ namespace tdt4501
             location = Task.Run(async () => await LocationModule.Instance.GetLocation()).Result;
             Longitude = "Longitude: " + location.Longitude.ToString();
             Latitude = "Latitude: " + location.Latitude.ToString();
-
+            Task.Run(async () => await CommunicationModule.Instance.Connect());
 
         }
 
