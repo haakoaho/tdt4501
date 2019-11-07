@@ -12,7 +12,7 @@ namespace tdt4501
         {
             InitializeComponent();
 
-        var page = FreshPageModelResolver.ResolvePageModel <MainPageModel> ();  
+        var page = FreshPageModelResolver.ResolvePageModel <MainPageModel>();  
         var basicNavContainer = new FreshNavigationContainer(page);  
         MainPage = basicNavContainer; 
         }

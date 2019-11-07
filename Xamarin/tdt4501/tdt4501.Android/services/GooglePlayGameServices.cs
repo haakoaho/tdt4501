@@ -29,8 +29,7 @@ namespace tdt4501.Droid.services
         List<IAchievement> achievments = new List<IAchievement>();
         Dictionary<string, List<ILeaderboardScore>> scores = new Dictionary<string, List<ILeaderboardScore>>();
 
-        const int REQUEST_LEADERBOARD = 9002;
-        const int REQUEST_ALL_LEADERBOARDS = 9003;
+
         const int REQUEST_ACHIEVEMENTS = 9004;
         const int RC_RESOLVE = 9001;
 
@@ -244,48 +243,6 @@ namespace tdt4501.Droid.services
         }
 
         /// <summary>
-        /// Submit a score to google play. The score will only be updated if it is greater than the existing score. 
-        /// This is not immediate but will occur at the next sync of the google play client.
-        /// </summary>
-        /// <param name="leaderboardCode">Leaderboard code from you applications Google Play Game Services Leaderboards Page</param>
-        /// <param name="value">The value of the score</param>
-        public void SubmitScore(string leaderboardCode, long value)
-        {
-            GamesClass.Leaderboards.SubmitScore(client, leaderboardCode, value);
-        }
-
-        /// <summary>
-        /// Submit a score to google play. The score will only be updated if it is greater than the existing score. 
-        /// This is not immediate but will occur at the next sync of the google play client.
-        /// </summary>
-        /// <param name="leaderboardCode">Leaderboard code from you applications Google Play Game Services Leaderboards Page</param>
-        /// <param name="value">The value of the score</param>
-        /// <param name="value">Additional MetaData to attach. Must be a URI safe string with a max length of 64 characters</param>
-        public void SubmitScore(string leaderboardCode, long value, string metadata)
-        {
-            GamesClass.Leaderboards.SubmitScore(client, leaderboardCode, value, metadata);
-        }
-
-        /// <summary>
-        /// Show the built in leaderboard activity for the leaderboard code.
-        /// </summary>
-        /// <param name="leaderboardCode">Leaderboard code from you applications Google Play Game Services Leaderboards Page</param>
-        public void ShowLeaderBoardIntentForLeaderboard(string leaderboardCode)
-        {
-            var intent = GamesClass.Leaderboards.GetLeaderboardIntent(client, leaderboardCode);
-            activity.StartActivityForResult(intent, REQUEST_LEADERBOARD);
-        }
-
-        /// <summary>
-        /// Show the built in leaderboard activity for all the leaderboards setup for your application
-        /// </summary>
-        public void ShowAllLeaderBoardsIntent()
-        {
-            var intent = GamesClass.Leaderboards.GetAllLeaderboardsIntent(client);
-            activity.StartActivityForResult(intent, REQUEST_ALL_LEADERBOARDS);
-        }
-
-        /// <summary>
         /// Load the Achievments. This populates the Achievements property
         /// </summary>
         public async Task LoadAchievements()
@@ -385,6 +342,21 @@ namespace tdt4501.Droid.services
                         OnSignInFailed(this, EventArgs.Empty);
                 }
             }
+        }
+
+        public void EnterMultiPlayerLobby()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SendData(byte data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public byte ReceiveData()
+        {
+            throw new NotImplementedException();
         }
     }
 }
