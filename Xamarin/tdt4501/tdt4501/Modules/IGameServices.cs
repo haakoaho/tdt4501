@@ -11,9 +11,10 @@ namespace tdt4501.ExternalServices
     //this is a tutorial for using Native service can be deleted
     public interface IGameServices
     {
-        void EnterMultiPlayerLobby();
+        //start the Google Play Client
+        void Start();
+        //unlock the Achievement for the player
         void UnlockAchievement(String Achievement);
-        void SendData(Byte data);
-        Byte ReceiveData();
+
     }
 }
