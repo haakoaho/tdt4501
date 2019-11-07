@@ -8,7 +8,7 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="LOCATION" 
+        <Label Text="LOCATION, make sure to allow the permissions" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
         <Label Text="{Binding Longitude}" 
