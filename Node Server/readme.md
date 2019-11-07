@@ -1,1 +1,4 @@
-A Python server for multiplayer funcitonality
+Node server for multiplayer
+
+npm install
+npm start
