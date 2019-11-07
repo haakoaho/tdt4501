@@ -9,7 +9,7 @@ var rooms = [];
 const port = 3001;
 
 // initializing http
-app.use('/', express.static(path.join(__dirname, 'public')));
+//app.use('/', express.static(path.join(__dirname, 'public')));
 
 
 
@@ -73,7 +73,7 @@ webSocket.on('connection', function (socket) {
       }
     };
     console.log('newquestioninroom', myroom);
-    webSocket.sockets.in(myroom).emit('new question', JSON.stringify(question));
+    webSocket.sockets.in(myroom).emit('new messages', JSON.stringify(question));
   });
 });
 
