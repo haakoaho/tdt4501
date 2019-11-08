@@ -20,16 +20,27 @@ namespace tdt4501
         public string Longitude { set; get; }
         public string Latitude { set; get; }
 
+        ChatRoom MyChatRoom = new ChatRoom("velociraptor1");
+
         public MainPageModel()
         {
             Location location = Task.Run(async () => await LocationModule.Instance.GetLocation()).Result;
-            location = Task.Run(async () => await LocationModule.Instance.GetLocation()).Result;
             Longitude = "Longitude: " + location.Longitude.ToString();
             Latitude = "Latitude: " + location.Latitude.ToString();
-            ChatRoom chatRooom = new ChatRoom("myRoom");
-            chatRooom.SendMessage("hello world");
+            MyChatRoom.SendMessage("hello rerej");
         }
-
+        public Command ButtonPressed
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    Location location = Task.Run(async () => await LocationModule.Instance.GetLocation()).Result;
+                    Longitude = "Longitude: " + location.Longitude.ToString();
+                    Latitude = "Latitude: " + location.Latitude.ToString();
+                });
+            }
+        }
 
     }
 }

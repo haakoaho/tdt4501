@@ -19,13 +19,13 @@ namespace tdt4501.Models
         {
            await CommunicationModule.Instance.Connect();
            await CommunicationModule.Instance.CreateRoom(roomName);
-            CommunicationModule.Instance.Listen();
         }
         public async Task SendMessage(string message)
         {
             await CommunicationModule.Instance.SendMessage(message);
 
         }
+
     }
 
 }

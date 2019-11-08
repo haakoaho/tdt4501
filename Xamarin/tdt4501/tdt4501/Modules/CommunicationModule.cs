@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 
 namespace tdt4501.Modules
@@ -13,8 +14,18 @@ namespace tdt4501.Modules
 
         public static readonly Uri server = new Uri("http://192.168.0.3:3001");
         SocketIOClient.SocketIO client = new SocketIOClient.SocketIO(server);
-        Queue<string> messages = new Queue<string>();
-        CommunicationModule() {}
+        Queue<string> Messages = new Queue<string>();
+        CommunicationModule()
+        {
+            client.OnReceivedEvent += (eventName, args) =>
+            {
+                if (eventName.Equals("new message"))
+                {
+                    Messages.Enqueue(args.Text);
+                }
+
+            };
+        }
 
         public static CommunicationModule Instance
         {
@@ -32,8 +43,8 @@ namespace tdt4501.Modules
         }
         public async Task Connect()
         {
-           await client.ConnectAsync();
-           await Task.Delay(1000);     
+            await client.ConnectAsync();
+            await Task.Delay(1000);
         }
         public async Task JoinRoom(String room)
         {
@@ -41,7 +52,7 @@ namespace tdt4501.Modules
             await Task.Delay(1000);
         }
         public async Task CreateRoom(String room)
-        { 
+        {
             await client.EmitAsync("create room", room);
             await Task.Delay(1000);
 
@@ -51,13 +62,15 @@ namespace tdt4501.Modules
             await Task.Delay(1000);
             await client.EmitAsync("new message", message);
         }
-        public async void Listen()
+        public string GetOneMessage()
         {
-            client.On("new message",  res =>
-            {
-                messages.Enqueue(res.Text);
-            });
+            return Messages.Dequeue();
         }
-
+        public bool MessageReady()
+        {
+            return (Messages.Count > 0);
+        }
     }
+
 }
+

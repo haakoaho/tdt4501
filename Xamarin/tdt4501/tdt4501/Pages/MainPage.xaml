@@ -17,6 +17,7 @@
         <Label Text="{Binding Latitude}" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
+        <Button Text ="Press this button Hard" Command="{Binding ButtonPressed}" CornerRadius="15"/>
     </StackLayout>
 
 </ContentPage>
