@@ -11,6 +11,7 @@ using Xamarin.Forms;
 using Xamarin.Essentials;
 using tdt4501.Modules;
 using FreshMvvm;
+using tdt4501.Models;
 
 namespace tdt4501
 {
@@ -25,7 +26,7 @@ namespace tdt4501
             location = Task.Run(async () => await LocationModule.Instance.GetLocation()).Result;
             Longitude = "Longitude: " + location.Longitude.ToString();
             Latitude = "Latitude: " + location.Latitude.ToString();
-            Task.Run(async () => await CommunicationModule.Instance.Connect());
+            ChatRoom chatRooom = new ChatRoom();
 
         }
 

@@ -11,8 +11,6 @@ namespace tdt4501.Modules
         private static CommunicationModule instance = null;
         private static readonly object padlock = new object();
 
-        public static readonly string ServerAdress = "http://192.168.0.3";
-        public static readonly int port = 3001;
         public static readonly Uri server = new Uri("http://192.168.0.3:3001");
         SocketIOClient.SocketIO client = new SocketIOClient.SocketIO(server);
         CommunicationModule() {}
@@ -33,15 +31,16 @@ namespace tdt4501.Modules
         }
         public async Task Connect()
         {
-            client.ConnectAsync();
+           await client.ConnectAsync();
+           await Task.Delay(1000);
         }
         public async Task JoinRoom(String room)
         {
-            //Client.Send(")
+            await client.EmitAsync("join room", room);
         }
         public async Task CreateRoom(String room)
-        {
-             //Socket.EmitAsync("create room", room);
+        { 
+            await client.EmitAsync("create room", room);
         }
     }
 }

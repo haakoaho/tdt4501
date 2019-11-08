@@ -21,14 +21,15 @@ webSocket.on('connection', function (socket) {
 
 
   socket.on('create room', function (data) {
+    console.log("room created", data);
     rooms.push(data);
     socket.join(data);
-    console.log("my data " + data);
     myroom = data
   });
 
   // join a room
   socket.on('join room', function (data) {
+      console.log("room joined", data)
       socket.join(data);
       myroom = data;
     }
@@ -37,6 +38,7 @@ webSocket.on('connection', function (socket) {
 
   // When a player sends data
   socket.on('new message', function (data) {
+    console.log("message sent", data)
     socket.to(myroom).emit('new message', JSON.stringify(data));
   });
 });
