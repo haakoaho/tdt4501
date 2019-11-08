@@ -13,6 +13,7 @@ namespace tdt4501.Modules
 
         public static readonly Uri server = new Uri("http://192.168.0.3:3001");
         SocketIOClient.SocketIO client = new SocketIOClient.SocketIO(server);
+        Queue<string> messages = new Queue<string>();
         CommunicationModule() {}
 
         public static CommunicationModule Instance
@@ -32,15 +33,31 @@ namespace tdt4501.Modules
         public async Task Connect()
         {
            await client.ConnectAsync();
-           await Task.Delay(1000);
+           await Task.Delay(1000);     
         }
         public async Task JoinRoom(String room)
         {
             await client.EmitAsync("join room", room);
+            await Task.Delay(1000);
         }
         public async Task CreateRoom(String room)
         { 
             await client.EmitAsync("create room", room);
+            await Task.Delay(1000);
+
         }
+        public async Task SendMessage(string message)
+        {
+            await Task.Delay(1000);
+            await client.EmitAsync("new message", message);
+        }
+        public async void Listen()
+        {
+            client.On("new message",  res =>
+            {
+                messages.Enqueue(res.Text);
+            });
+        }
+
     }
 }

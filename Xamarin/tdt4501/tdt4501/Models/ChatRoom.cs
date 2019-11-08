@@ -8,17 +8,23 @@ namespace tdt4501.Models
 {
     public class ChatRoom
     {
-        Task InitTask;
 
-        public ChatRoom()
+
+        public ChatRoom(string roomName)
         {
-            InitTask = initializeChatRoom();
+             initializeChatRoom(roomName);
         }
 
-        private async Task initializeChatRoom()
+        private async Task initializeChatRoom(string roomName)
         {
            await CommunicationModule.Instance.Connect();
-           await CommunicationModule.Instance.CreateRoom("testRoom");
+           await CommunicationModule.Instance.CreateRoom(roomName);
+            CommunicationModule.Instance.Listen();
+        }
+        public async Task SendMessage(string message)
+        {
+            await CommunicationModule.Instance.SendMessage(message);
+
         }
     }
 

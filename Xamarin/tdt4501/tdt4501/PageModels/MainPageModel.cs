@@ -26,8 +26,8 @@ namespace tdt4501
             location = Task.Run(async () => await LocationModule.Instance.GetLocation()).Result;
             Longitude = "Longitude: " + location.Longitude.ToString();
             Latitude = "Latitude: " + location.Latitude.ToString();
-            ChatRoom chatRooom = new ChatRoom();
-
+            ChatRoom chatRooom = new ChatRoom("myRoom");
+            chatRooom.SendMessage("hello world");
         }
 
 
