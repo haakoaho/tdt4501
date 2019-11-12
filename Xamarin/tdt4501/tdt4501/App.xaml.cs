@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using FreshMvvm;
 using tdt4501.Modules;
+using tdt4501;
 
 namespace tdt4501
 {
