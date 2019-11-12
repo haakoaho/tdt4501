@@ -1,4 +1,8 @@
 # Auto detect text files and perform LF normalization
 * text=auto
-
 Xamarin linguist-vendored=false
+Godot linguist-vendored=false
+Node Server linguist-vendored=false
+Unity linguist-vendored=false
+libGDX linguist-vendored=false
+
