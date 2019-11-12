@@ -1,6 +1,9 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using FreshMvvm;
+using tdt4501.Modules;
+using tdt4501;
 
 namespace tdt4501
 {
@@ -10,7 +13,9 @@ namespace tdt4501
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+        var page = FreshPageModelResolver.ResolvePageModel <MainPageModel>();  
+        var basicNavContainer = new FreshNavigationContainer(page);  
+        MainPage = basicNavContainer; 
         }
 
         protected override void OnStart()

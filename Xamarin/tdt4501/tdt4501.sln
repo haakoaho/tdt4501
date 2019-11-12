@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tdt4501.Android", "tdt4501.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tdt4501.iOS", "tdt4501.iOS\tdt4501.iOS.csproj", "{69E4FB95-ED5F-4A95-ACFB-68E3282ECFA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tdt4501", "tdt4501\tdt4501.csproj", "{393F0CC1-49A5-444A-899E-0B663852DDC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tdt4501", "tdt4501\tdt4501.csproj", "{393F0CC1-49A5-444A-899E-0B663852DDC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

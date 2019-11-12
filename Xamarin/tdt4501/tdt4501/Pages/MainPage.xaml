@@ -8,9 +8,16 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="{Binding text1}" 
+        <Label Text="LOCATION, make sure to allow the permissions" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
+        <Label Text="{Binding Longitude}" 
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />
+        <Label Text="{Binding Latitude}" 
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />
+        <Button Text ="Press this button Hard" Command="{Binding ButtonPressed}" CornerRadius="15"/>
     </StackLayout>
 
 </ContentPage>
