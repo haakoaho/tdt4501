@@ -5,10 +5,16 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.Modules.ISensor;
 
 public class MyGdxGame extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
+	ISensor sensors;
+
+	public MyGdxGame(ISensor sensors){
+		this.sensors = sensors;
+	}
 	
 	@Override
 	public void create () {
@@ -24,6 +30,7 @@ public class MyGdxGame extends ApplicationAdapter {
 		batch.draw(img, 0, 0);
 		batch.end();
 	}
+
 	
 	@Override
 	public void dispose () {
