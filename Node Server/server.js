@@ -8,8 +8,6 @@ const _ = require('lodash');
 var rooms = [];
 const port = 3001;
 
-// initializing http
-//app.use('/', express.static(path.join(__dirname, 'public')));
 
 
 
