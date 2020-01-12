@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);
-const webSocket = require('socket.io')(http);
+const io = require('socket.io')(http);
 
 
 var rooms = [];
@@ -10,8 +10,7 @@ const port = 3001;
 
 
 
-// When a client connects
-webSocket.on('connection', function (socket) {
+io.on('connection', function (socket) {
   var address = socket.handshake.address;
   var myroom = null;
   console.log('new connection');
@@ -24,16 +23,13 @@ webSocket.on('connection', function (socket) {
     myroom = data
   });
 
-  // join a room
   socket.on('join room', function (data) {
       console.log("room joined", data)
       socket.join(data);
       myroom = data;
     }
   );
-
-
-  // When a player sends data
+  
   socket.on('new message', function (data) {
     console.log("message sent", data)
     socket.to(myroom).emit('new message', JSON.stringify(data));
