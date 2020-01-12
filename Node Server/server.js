@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const http = require('http').Server(app);
 const webSocket = require('socket.io')(http);
-const _ = require('lodash');
 
 
 var rooms = [];
